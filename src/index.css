@@ -1,42 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Indian Cultural Kolam Design System with Modern Neon Accents */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Cultural Color Palette */
+    --background: 20 10% 5%;
+    --foreground: 45 100% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 20 15% 8%;
+    --card-foreground: 45 90% 92%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 20 15% 8%;
+    --popover-foreground: 45 90% 92%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Saffron & Deep Orange Primary */
+    --primary: 30 100% 50%;
+    --primary-foreground: 20 10% 5%;
+    --primary-glow: 30 100% 60%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Sacred Turmeric Secondary */
+    --secondary: 45 95% 55%;
+    --secondary-foreground: 20 15% 8%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Temple Gold Accent */
+    --accent: 50 100% 60%;
+    --accent-foreground: 20 15% 8%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Neon Cyan for Modern Touch */
+    --neon: 180 100% 50%;
+    --neon-glow: 180 100% 60%;
+    --neon-muted: 180 50% 30%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Spiritual Purple */
+    --mystic: 270 70% 60%;
+    --mystic-glow: 270 80% 70%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Cultural Greens */
+    --nature: 130 60% 45%;
+    --nature-glow: 130 70% 55%;
 
-    --radius: 0.5rem;
+    --muted: 20 20% 15%;
+    --muted-foreground: 45 30% 65%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 45 95% 95%;
+
+    --border: 20 25% 18%;
+    --input: 20 25% 18%;
+    --ring: 30 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-sacred: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
+    --gradient-neon: linear-gradient(135deg, hsl(var(--neon)), hsl(var(--mystic)));
+    --gradient-cultural: linear-gradient(135deg, hsl(var(--nature)), hsl(var(--secondary)));
+    --gradient-bg: linear-gradient(180deg, hsl(var(--background)), hsl(20 15% 8%));
+
+    /* Shadows & Glows */
+    --shadow-primary: 0 10px 30px -5px hsl(var(--primary) / 0.3);
+    --shadow-neon: 0 0 30px hsl(var(--neon) / 0.4);
+    --shadow-mystic: 0 0 40px hsl(var(--mystic) / 0.3);
+    --glow-primary: 0 0 20px hsl(var(--primary) / 0.6);
+    --glow-neon: 0 0 25px hsl(var(--neon) / 0.5);
+
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -55,43 +91,6 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
 }
 
 @layer base {
@@ -100,6 +99,102 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+    background: var(--gradient-bg);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Kolam Pattern Animations */
+  .kolam-pattern {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kolam-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--neon) / 0.1), transparent);
+    animation: kolam-flow 3s infinite ease-in-out;
+  }
+
+  @keyframes kolam-flow {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+  }
+
+  /* Sacred Glow Effects */
+  .sacred-glow {
+    box-shadow: var(--glow-primary);
+    transition: var(--transition-smooth);
+  }
+
+  .sacred-glow:hover {
+    box-shadow: var(--glow-primary), var(--glow-neon);
+    transform: translateY(-2px);
+  }
+
+  /* Neon Pulse Animation */
+  .neon-pulse {
+    animation: neon-pulse 2s infinite ease-in-out;
+  }
+
+  @keyframes neon-pulse {
+    0%, 100% { 
+      box-shadow: 0 0 5px hsl(var(--neon) / 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 20px hsl(var(--neon) / 0.8), 0 0 30px hsl(var(--mystic) / 0.4);
+    }
+  }
+
+  /* Cultural Border Pattern */
+  .cultural-border {
+    position: relative;
+    border: 2px solid transparent;
+    background: linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box,
+                var(--gradient-sacred) border-box;
+  }
+
+  /* Mandala Spin */
+  .mandala-spin {
+    animation: mandala-spin 20s infinite linear;
+  }
+
+  @keyframes mandala-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Mathematical Grid Pattern */
+  .math-grid {
+    background-image: 
+      linear-gradient(hsl(var(--neon) / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--neon) / 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Upload Zone Hover Effect */
+  .upload-zone {
+    transition: var(--transition-bounce);
+    border: 2px dashed hsl(var(--border));
+  }
+
+  .upload-zone:hover {
+    border-color: hsl(var(--neon));
+    background: hsl(var(--neon) / 0.05);
+    transform: scale(1.02);
+  }
+
+  .upload-zone.dragover {
+    border-color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.1);
+    box-shadow: var(--shadow-primary);
   }
 }

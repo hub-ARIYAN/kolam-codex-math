@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { KolamResults } from '@/components/KolamResults';
 import { GeneratedKolams } from '@/components/GeneratedKolams';
 import { useNavigate } from 'react-router-dom';
+import { useKolamAnalysis } from '@/hooks/useKolamAnalysis';
 
 export const Analysis: React.FC = () => {
   const navigate = useNavigate();
+  const { 
+    analysisData, 
+    isProcessing, 
+    downloadAnalysisImage, 
+    openDesmos,
+    hasResults 
+  } = useKolamAnalysis();
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-card">
@@ -27,7 +35,21 @@ export const Analysis: React.FC = () => {
         </div>
         
         <div className="space-y-12">
-          <KolamResults />
+          {isProcessing && (
+            <div className="text-center py-12">
+              <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+              <p className="text-lg text-muted-foreground">Processing your kolam analysis...</p>
+            </div>
+          )}
+          
+          {hasResults && (
+            <KolamResults 
+              analysisData={analysisData}
+              onDownloadImage={downloadAnalysisImage}
+              onViewDesmos={openDesmos}
+            />
+          )}
+          
           <GeneratedKolams />
         </div>
       </div>

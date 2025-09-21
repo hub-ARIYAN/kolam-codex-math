@@ -6,10 +6,10 @@ import { useToast } from '@/hooks/use-toast';
 
 interface KolamUploadProps {
   onUpload: (file: File) => void;
-  isAnalyzing?: boolean;
+  isProcessing?: boolean;
 }
 
-export const KolamUpload: React.FC<KolamUploadProps> = ({ onUpload, isAnalyzing = false }) => {
+export const KolamUpload: React.FC<KolamUploadProps> = ({ onUpload, isProcessing = false }) => {
   const [dragActive, setDragActive] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const { toast } = useToast();
@@ -84,13 +84,13 @@ export const KolamUpload: React.FC<KolamUploadProps> = ({ onUpload, isAnalyzing 
                   </div>
                   <Button 
                     onClick={handleAnalyze}
-                    disabled={isAnalyzing}
+                    disabled={isProcessing}
                     className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg transition-all duration-300"
                   >
-                    {isAnalyzing ? (
+                    {isProcessing ? (
                       <>
                         <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin mr-2" />
-                        Analyzing...
+                        Processing...
                       </>
                     ) : (
                       <>

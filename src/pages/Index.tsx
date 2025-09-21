@@ -1,23 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Sparkles, Calculator, Palette, ExternalLink } from 'lucide-react';
 import { KolamUpload } from '@/components/KolamUpload';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { useKolamAnalysis } from '@/hooks/useKolamAnalysis';
 import heroImage from '@/assets/kolam-hero.jpg';
 
 const Index = () => {
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
   const navigate = useNavigate();
+  const { uploadKolam, isProcessing } = useKolamAnalysis();
 
   const handleUpload = async (file: File) => {
-    setIsAnalyzing(true);
-    
-    // Simulate analysis process - will be replaced with actual backend integration
-    setTimeout(() => {
-      setIsAnalyzing(false);
-      navigate('/analysis');
-    }, 3000);
+    await uploadKolam(file);
+    navigate('/analysis');
   };
 
   return (
@@ -74,7 +70,7 @@ const Index = () => {
             </p>
           </div>
           
-          <KolamUpload onUpload={handleUpload} isAnalyzing={isAnalyzing} />
+          <KolamUpload onUpload={handleUpload} isProcessing={isProcessing} />
         </div>
       </div>
 

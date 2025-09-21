@@ -4,17 +4,19 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
+import { KolamAnalysisResponse } from '@/services/kolamApi';
+
 interface KolamResultsProps {
-  analysisData?: {
-    culturalDescription?: string;
-    mathematicalAnalysis?: string;
-    analysisImageUrl?: string;
-    equations?: string;
-    desmosUrl?: string;
-  };
+  analysisData?: KolamAnalysisResponse;
+  onDownloadImage?: () => void;
+  onViewDesmos?: () => void;
 }
 
-export const KolamResults: React.FC<KolamResultsProps> = ({ analysisData }) => {
+export const KolamResults: React.FC<KolamResultsProps> = ({ 
+  analysisData, 
+  onDownloadImage,
+  onViewDesmos 
+}) => {
   // Mock data for demonstration - will be replaced with real data from backend
   const mockData = {
     culturalDescription: `This beautiful kolam showcases the traditional "Pulli Kolam" pattern, characterized by intricate dot-based designs that represent cosmic order and divine geometry. The symmetrical patterns reflect the Tamil cultural belief in harmony between the material and spiritual worlds. The circular motifs symbolize the eternal cycle of life, while the interconnected lines represent the unity of all existence. Such kolams are traditionally drawn during festivals like Pongal and serve as a spiritual practice that connects the drawer with ancient wisdom.`,
@@ -53,12 +55,19 @@ Where k = 0,1,2,...,7 for 8-fold symmetry`,
   const data = analysisData || mockData;
 
   const handleDownloadAnalysis = () => {
-    // Will be connected to backend download endpoint
-    console.log('Download analysis image');
+    if (onDownloadImage) {
+      onDownloadImage();
+    } else {
+      console.log('Download analysis image');
+    }
   };
 
   const handleViewDesmos = () => {
-    window.open(data.desmosUrl, '_blank');
+    if (onViewDesmos) {
+      onViewDesmos();
+    } else {
+      window.open(data.desmosUrl, '_blank');
+    }
   };
 
   return (
